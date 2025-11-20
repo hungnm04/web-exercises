@@ -1,23 +1,52 @@
-# Web Exercises
+# User Management Dashboard
 
-This repository contains web development exercises and projects.
+A modern user management dashboard built with React, featuring clean architecture and professional design patterns.
 
-## About
+## 📁 Project Structure
 
-A collection of web development practice exercises covering various topics including HTML, CSS, JavaScript, and modern web technologies.
-
-## Getting Started
-
-Clone the repository:
-```bash
-git clone https://github.com/hungnm04/web-exercises.git
-cd web-exercises
+```
+src/
+├── components/          # Reusable UI components
+│   ├── Toast.jsx       # Notification component
+│   ├── UserModal.jsx   # User form modal
+│   └── Pagination.jsx  # Pagination controls
+├── hooks/              # Custom React hooks
+│   ├── useUserManagement.js    # User CRUD logic
+│   └── useSearchAndPagination.js # Search & pagination logic
+├── services/           # API abstraction layer
+│   └── userApiService.js       # User API service
+├── config/             # Configuration files
+│   └── constants.js    # App constants and messages
+├── index.css           # Global styles 
+└── App.jsx             # Main application component
 ```
 
-## Structure
 
-This repository is organized by exercise topics and projects.
+## 🚀 Getting Started
 
-## License
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/hungnm04/web-exercises.git
+   cd web-exercises/react-app
+   ```
 
-This project is for educational purposes.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser:**
+
+## 📱 Usage
+
+- **View Users**: Browse the user table with pagination
+- **Search**: Use the search bar to filter users by name
+- **Add User**: Click "Add User" to create new accounts
+- **Edit User**: Click the edit icon to modify user details
+- **Delete User**: Click the delete icon to remove users (with confirmation)
+

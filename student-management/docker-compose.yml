@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   mongodb:
     image: mongo:latest
@@ -7,3 +7,42 @@ services:
       - "27017:27017"
     volumes:
       - ./mongodbdata:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=student_db
+    networks:
+      - student-network
+
+  backend:
+    build: ./backend
+    container_name: student-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - MONGO_URL=mongodb://mongodb:27017/student_db
+    depends_on:
+      - mongodb
+    networks:
+      - student-network
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+  frontend:
+    build: ./frontend
+    container_name: student-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - student-network
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - REACT_APP_API_URL=http://localhost:5000/api/students
+
+networks:
+  student-network:
+    driver: bridge
